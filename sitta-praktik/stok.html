@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stok Bahan Ajar - SITTA UT</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <header>
+        <div class="logo-container">
+            <div class="logo-title">
+                <h1>SITTA UT</h1>
+                <p>Universitas Terbuka</p>
+            </div>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="stok.html">Informasi Bahan Ajar</a></li>
+                <li><a href="tracking.html">Tracking Pengiriman</a></li>
+                <li><a href="index.html" style="background:#cc0000;">Keluar</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <h2>Informasi Stok Bahan Ajar</h2>
+            <button class="btn" style="width: auto; padding: 8px 15px;" onclick="openModal('modalTambahStok')">+ Tambah Stok</button>
+        </div>
+
+        <h3 style="margin-top: 25px;">Katalog Buku Bahan Ajar</h3>
+        <div class="grid-container" id="stokContainer"></div>
+
+        <h3 style="margin-top: 40px;">Tabel Rincian Stok</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Kode Lokasi</th>
+                    <th>Kode Barang</th>
+                    <th>Nama Bahan Ajar</th>
+                    <th>Jenis</th>
+                    <th>Edisi</th>
+                    <th>Stok</th>
+                </tr>
+            </thead>
+            <tbody id="stokTableBody"></tbody>
+        </table>
+    </div>
+
+<div id="modalTambahStok" class="modal">
+    <div class="modal-content">
+        <span class="close-btn" onclick="closeModal('modalTambahStok')">&times;</span>
+        <h3 style="color: #002b5b; margin-bottom: 15px;">Tambah Stok Bahan Ajar</h3>
+        <form id="formTambahStok" onsubmit="handleAddStok(event)">
+            <div class="form-group">
+                <label>Kode Lokasi</label>
+                <input type="text" id="kodeLokasi" required placeholder="Masukkan Kode Lokasi">
+            </div>
+            <div class="form-group">
+                <label>Kode Barang</label>
+                <input type="text" id="kodeBarang" required placeholder="Masukkan Kode Barang">
+            </div>
+            <div class="form-group">
+                <label>Nama Barang</label>
+                <input type="text" id="namaBarang" required placeholder="Masukkan Nama Barang">
+            </div>
+            <div class="form-group">
+                <label>Jenis Barang</label>
+                <input type="text" id="jenisBarang" required placeholder="Masukkan Jenis Barang (misal: BMP)">
+            </div>
+            <div class="form-group">
+                <label>Edisi</label>
+                <input type="text" id="edisi" required placeholder="Masukkan Edisi">
+            </div>
+            <div class="form-group">
+                <label>Stok Initial</label>
+                <input type="number" id="stok" required placeholder="Masukkan Jumlah Stok">
+            </div>
+
+            <div class="form-group">
+                <label>Cover Buku (Upload Gambar)</label>
+                <input type="file" id="coverFile" accept="image/*" onchange="handleCoverUpload(event)">
+                <input type="hidden" id="coverPath" value="">
+            </div>
+            <button type="submit" class="btn">Simpan Data</button>
+        </form>
+    </div>
+</div>
+
+    <script src="js/data.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
